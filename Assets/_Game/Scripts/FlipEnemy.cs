@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlipEnemy : MonoBehaviour
 {
-
+    /*
     private void OnTriggerEnter2D(Collider2D enemy)
     {
         if(enemy.tag == "Enemy")
@@ -12,5 +12,5 @@ public class FlipEnemy : MonoBehaviour
             enemy.transform.Rotate(0f, 180f, 0f);
         }
     }
-
+    */
 }

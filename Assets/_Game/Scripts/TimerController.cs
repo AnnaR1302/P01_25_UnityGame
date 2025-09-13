@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimerController : MonoBehaviour
 {
+    public string TitleScreen;
     [SerializeField] private float timeCounter;
     [SerializeField] private float countdownTimer = 120f;
     [SerializeField] private bool isCountdown;
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private Text timerText;
 
     private void Update()
     {
@@ -20,12 +22,17 @@ public class TimerController : MonoBehaviour
         if (isCountdown && countdownTimer > 0)
         {
             countdownTimer -= Time.deltaTime;
-        }else if (!isCountdown)
+        }
+        else if (!isCountdown)
         {
             timeCounter += Time.deltaTime;
         }
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-            
+
+        if (countdownTimer >= 0)
+        {
+            SceneManager.LoadScene(TitleScreen);
+        }
     }
 }

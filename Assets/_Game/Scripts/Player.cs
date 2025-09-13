@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class Player : MonoBehaviour
 {
-    public int health = 3;
+    public float health;
+    public float maxHealth;
+    public Image healthBar;
 
-
+    private void Start()
+    {
+        maxHealth = health;
+    }
     private void Update()
     {
+        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
+        
         if(health <= 0)
         {
-            health = 0;
             Destroy(gameObject);
         }
     }
